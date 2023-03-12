@@ -1,0 +1,12 @@
+source:
+  kind: Pod
+  name: myapp-pod
+  fieldPath: metadata.labels.ENV_VAR
+targets:
+- select:
+    name: myapp-pod
+    kind: Pod
+  fieldPaths:
+  - spec.containers.*.env.[name=ENV_SET].value
+  options:
+    create: true
