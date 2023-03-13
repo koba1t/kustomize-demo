@@ -1,0 +1,13 @@
+source:
+  kind: ConfigMap
+  name: cluster-param
+  fieldPath: data.CLUSTER_NAME
+targets:
+- select:
+    name: simple-ingress
+    kind: Ingress
+  fieldPaths:
+  - spec.rules.0.host
+  options:
+    delimiter: '.'
+    index: 0
