@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+spec:
+  containers:
+  - name: app
+    image: nginx
+    env:
+    - name: AppDomain
+      value: ${CLUSTER_NAME}.${ENVIRONMENT}.example.com

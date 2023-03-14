@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+replacements:
+- source:
+    kind: ConfigMap
+    name: cluster-param
+    fieldPath: data.CLUSTER_ENVIRONMENT
+  targets:
+  - select:
+      name: myapp
+      kind: Pod
+    fieldPaths:
+    - spec.containers.[name=app].env.[name=AppDomain].value
+    options:
+      delimiter: '.'
+      index: 1
+- source:
+    kind: ConfigMap
+    name: cluster-param
+    fieldPath: data.CLUSTER_NAME
+  targets:
+  - select:
+      name: myapp
+      kind: Pod
+    fieldPaths:
+    - spec.containers.[name=app].env.[name=AppDomain].value
+    options:
+      delimiter: '.'
+      index: 0

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-param
+data:
+  CLUSTER_ENVIRONMENT: dev-env
+  CLUSTER_NAME: cluster-01
