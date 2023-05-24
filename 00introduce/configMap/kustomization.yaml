@@ -4,3 +4,5 @@ configMapGenerator:
 - literals:
   - myData=somevalue1
   name: my_literal
+resources:
+- pod.yaml
